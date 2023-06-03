@@ -1,0 +1,70 @@
+.body{
+    margin: 0px;
+    padding: 0px;
+}
+.navBar{
+    /* position: fixed; */
+    background-color: black;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+    height: 30px;
+    width: 100%;
+}
+.link{
+    color: azure;
+}
+
+.footer{
+    color: white;
+    background-color: black;
+    /* position: fixed; */
+    width: 100%;
+    margin-top: 344px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.aboutFooter{
+    color: white;
+    background-color: black;
+    /* position: fixed; */
+    width: 100%;
+    /* margin-top: 344px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.container{
+    background-color: lightgoldenrodyellow;
+        justify-content:center;
+        width: 50%;
+        margin-left: 26%;
+        margin-top: 5%;
+        text-align: center;
+        padding: 20px;
+
+    }
+.delete{
+  margin: 0px;
+  padding: 0px;
+  
+    
+}
+
+.logo {
+    background-image: url(../RAHUL.jpg);
+  }
+  .img{
+    margin: 0px;
+    padding: 0px;
+    height: 550px;
+    width: 300px;
+  }
+
