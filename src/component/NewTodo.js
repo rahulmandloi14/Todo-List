@@ -1,17 +1,15 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState,useRef } from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
-// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import "./new.css"
 import {Link } from "react-router-dom";
+import Footer from './Footer';
 
 
-
-// import Icon from "../pages/icon/index.jsx"
-// import "./Todolist.css";
-// import { FaBeer } from "react-icons/fa";
 
 const NewTodo = () => {
+
+  const refElement=useRef("")
   const [activity, setActivity] = useState("")
   const [listData, setListData] = useState([])
 
@@ -23,23 +21,27 @@ const NewTodo = () => {
 
   function updated() {
     setListData([...listData, activity])
-
+    refElement.current.focus()
     console.log([...listData]);
     onSubmit()
   }
+
   function remove(i) {
     const updatedListData = listData.filter((elem, id) => {
       return i != id
     })
     setListData(updatedListData)
   }
+
   function removeAll() {
     setListData([])
   }
+
   const onInput=(e)=>setActivity(e.target.value)
   function onSubmit(){
     setActivity("")
   }
+
   return (
     <>
       <nav>
@@ -56,8 +58,8 @@ const NewTodo = () => {
 
         <h1 className='heading'>Todo List</h1>
         
-        <input placeholder='add activity' className='input' value={activity}  onInput={onInput}
-      />
+        <input placeholder='add activity' className='input' value={activity} 
+         onInput={onInput} ref={refElement} />
         <button onClick={updated}>Add</button>
 
         <div>{listData !== [] && listData.map((value, i) => {
@@ -75,11 +77,8 @@ const NewTodo = () => {
         })}
         </div>
         {listData.length >= 1 && <button onClick={removeAll}>remove All</button>}
-        </div>
-
-
-      <div className='footer'><GitHubIcon />                       
-            <footer>2023 by rahul-devops creation </footer></div>
+        </div>                  
+        <Footer/>
 
     </>
   )
