@@ -5,13 +5,19 @@ import "./new.css"
 import {Link } from "react-router-dom";
 import Footer from './Footer';
 
-
-
+const getLocalData = ()=>{
+const data=localStorage.getItem("todoList")
+if (data){
+  return JSON.parse(localStorage.getItem("todoList"))
+} else{
+  return [];
+}
+}
 const NewTodo = () => {
 
   const refElement=useRef("")
   const [activity, setActivity] = useState("")
-  const [listData, setListData] = useState([])
+  const [listData, setListData] = useState(getLocalData())
 
   useEffect(() => {
     console.log(listData)
@@ -42,6 +48,9 @@ const NewTodo = () => {
     setActivity("")
   }
 
+  useEffect(()=>{
+localStorage.setItem("todoList",JSON.stringify(listData))
+  },[listData])
   return (
     <>
       <nav>
@@ -67,11 +76,9 @@ const NewTodo = () => {
             <>
               <p key={i}>
                 <div>{value}
-        
                   <button onClick={() => remove(i)} className='delete'><BackspaceIcon fontSize='small'/></button>
                 </div>
               </p>
-
             </>
           )
         })}
